@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="web-app" type="jav:web-appType" xmlns:jav="http://xmlns.jcp.org/xml/ns/javaee"/>
+  <xs:complexType name="welcome-file-listType">
+    <xs:sequence>
+      <xs:element name="welcome-file" maxOccurs="unbounded" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="index.html"/>
+            <xs:enumeration value="index.htm"/>
+            <xs:enumeration value="index.jsp"/>
+            <xs:enumeration value="default.html"/>
+            <xs:enumeration value="default.htm"/>
+            <xs:enumeration value="default.jsp"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="web-appType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="display-name"/>
+      <xs:element type="jav:welcome-file-listType" name="welcome-file-list" xmlns:jav="http://xmlns.jcp.org/xml/ns/javaee"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="version"/>
+  </xs:complexType>
+</xs:schema>
